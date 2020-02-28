@@ -203,7 +203,7 @@ app.post('/api/v1/passenger/available_cabs/', (req, res) => {
 
       results = results.sort((a, b) => (a.distance < b.distance) ? 1 : ((b.distance < a.distance) ? -1 : 0)); 
 
-      return res.status(200).send(results);
+      return res.status(200).send(results[0]);
     } else {
       return res.status(400).json({        
         'message': 'No cabs available!'
