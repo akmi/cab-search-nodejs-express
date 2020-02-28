@@ -1,7 +1,13 @@
 var path = require('path');
 const sqlite3 = require("sqlite3").verbose();
+var fs = require('fs');
 
 const db_name = path.resolve(__dirname, "data", "drivers.db");
+var folder_name = __dirname + "/data";
+if (!fs.existsSync(folder_name)) {
+  fs.mkdirSync(folder_name);
+}
+
 const db = new sqlite3.Database(db_name, err => {
   if (err) {
     return console.error(err.message);
